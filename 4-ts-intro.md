@@ -34,8 +34,6 @@ The language is particularly beneficial for large-scale applications, team proje
 
 In essence, TypeScript takes the flexibility of JavaScript and adds a layer of reliability and predictability, making it easier to build and maintain complex applications with confidence.
 
-
-Here are 5 examples comparing JavaScript vs TypeScript showing why TypeScript is valuable
 ---
 I'll guide you through installing and running TypeScript step by step.
 
@@ -187,7 +185,12 @@ That's it! You now have TypeScript installed and running. The basic workflow is:
 3. Run the generated `.js` files with `node`
 
 For development, consider using `ts-node` to skip the compilation step during testing.
+
 ---
+
+# Here are 5 examples comparing JavaScript vs TypeScript showing why TypeScript is valuable
+
+
 ## 1. **Function Parameter Types**
 
 ```javascript
