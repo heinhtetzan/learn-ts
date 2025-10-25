@@ -37,6 +37,7 @@ Here are the most useful ones (you’ll see these in almost every project):
 | **module**                           | Module system (Node.js uses `commonjs`, bundlers use `ESNext`) | `"module": "ESNext"`                        |
 | **rootDir**                          | Where TypeScript source files are located                      | `"rootDir": "src"`                          |
 | **outDir**                           | Where compiled JS files go                                     | `"outDir": "dist"`                          |
+| **noEmitOnError**                    | Don't emit js file if there is any error                       | `"noEmitOnError": true,`                    |
 | **strict**                           | Enables *all* strict type-checking rules                       | `"strict": true"`                           |
 | **esModuleInterop**                  | Allows default imports from CommonJS modules                   | `"esModuleInterop": true"`                  |
 | **skipLibCheck**                     | Skips type checking of declaration files (`.d.ts`)             | `"skipLibCheck": true"`                     |

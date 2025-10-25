@@ -57,6 +57,36 @@ const readOnlyNumbers: readonly number[] = [1, 2, 3];
 // Union Array
 let mixed: (string | number)[] = [1, "hello"];
 // 🚨 RULES: Elements can be any of the union types
+
+// Example 1: Array with any type (flexible but loses type safety)
+let flexibleArray: any[] = [1, "hello", true, { name: "John" }, [1, 2, 3]];
+console.log(flexibleArray); // [1, "hello", true, {name: "John"}, [1, 2, 3]]
+
+// Example 2: 2D array (array of arrays)
+let matrix: number[][] = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+console.log(matrix[1][2]); // 6
+
+// Example 3: Mixed array with any and specific types
+let data: (string | number | any)[] = ["text", 42, { key: "value" }, [1, 2], null];
+console.log(data[2]); // {key: "value"}
+
+// Example 5: Array that can contain any type using generic any array
+let completelyFlexible: Array<any> = [
+  123,
+  "string",
+  true,
+  undefined,
+  null,
+  { object: true },
+  function() { return "I'm a function"; },
+  Symbol("symbol")
+];
+console.log(completelyFlexible.length); // 8
+
 ```
 
 ---
@@ -105,6 +135,14 @@ let optionalTuple: [string, number?] = ["hello"];
 // Readonly tuple
 const readOnlyTuple: readonly [string, number] = ["test", 42];
 // 🚨 RULES: Cannot modify elements after creation
+ 
+// Example 6: Tuple-like array with any positions
+let config: [string, any, number] = ["server", { host: "localhost", port: 8080 }, 3];
+console.log(config[1].host); // "localhost"
+
+// Example 7: Array that starts with specific types but can have any additional elements
+let mixedStart: [string, number, ...any[]] = ["start", 1, true, { extra: "data" }, [4, 5, 6]];
+console.log(mixedStart[4]); // [4, 5, 6]
 ```
 
 ---
