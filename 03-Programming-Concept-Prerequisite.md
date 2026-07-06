@@ -1,4 +1,6 @@
-### The Two Axes of Type Systems
+# Programming Concepts: Type Systems
+
+## The Two Axes of Type Systems
 
 We can categorize type systems along two independent dimensions:
 
@@ -105,13 +107,10 @@ console.log(anotherResult); // 50 (The string "5" was converted to a number)
 | **Go** | **Static** | **Strong** | Like Java, types are compile-time checked and enforced strictly. |
 | **Ruby** | **Dynamic** | **Strong** | Like Python, types are checked at runtime but are strictly enforced. |
 
-### Summary
+## Summary
 
 *   **Static vs. Dynamic** is about **WHEN** you find out about a type error (compile-time vs. run-time).
 *   **Strong vs. Weak** is about **HOW OFTEN** the language automatically converts types for you (rarely vs. frequently).
-
-
-Absolutely! Let's dive deeper with extensive code examples across multiple languages to illustrate these concepts clearly.
 
 ## Axis 1: Static vs Dynamic Typing
 
@@ -125,16 +124,16 @@ public class StaticExample {
         String name = "Alice";
         int age = 25;
         double salary = 50000.0;
-        
+
         // These would cause COMPILE-TIME errors:
         // name = 30;                    // Error: incompatible types
         // age = "twenty-five";          // Error: incompatible types
         // salary = "fifty thousand";    // Error: incompatible types
-        
+
         // The compiler knows exactly what methods are available
         name.length();        // OK - String has length() method
         // age.length();     // COMPILE ERROR: int doesn't have length()
-        
+
         System.out.println("Name: " + name + ", Age: " + age);
     }
 }
@@ -150,15 +149,15 @@ class StaticExample {
         string message = "Hello World";
         int count = 10;
         bool isValid = true;
-        
+
         // Compiler prevents type mismatches
         // message = 42;                 // Error: Cannot convert int to string
         // count = "ten";               // Error: Cannot convert string to int
-        
+
         // Type-specific operations are enforced
         string upper = message.ToUpper();  // OK - string method
         // int upper = count.ToUpper();  // COMPILE ERROR: int has no ToUpper()
-        
+
         Console.WriteLine($"{message} has {message.Length} characters");
     }
 }
@@ -317,7 +316,7 @@ except TypeError as e:
 result = int("5") + 10      # OK: explicit conversion
 print(result)               # 15
 
-result = "5" + str(10)      # OK: explicit conversion  
+result = "5" + str(10)      # OK: explicit conversion
 print(result)               # "510"
 
 # Even with similar-looking types
@@ -336,26 +335,26 @@ public class StrongTyping {
     public static void main(String[] args) {
         String text = "5";
         int number = 10;
-        
+
         // These would not compile - no implicit conversions
         // String result1 = text + number;  // Actually, this WORKS in Java due to operator overloading
         // But generally, Java is strongly typed:
-        
+
         // int result2 = text + number;     // Error: incompatible types
         // boolean result3 = text;          // Error: incompatible types
-        
+
         // Explicit conversions required
         int parsedNumber = Integer.parseInt(text);
         int result = parsedNumber + number;  // OK: explicit conversion
         System.out.println("Result: " + result);
-        
+
         // No truthy/falsy concepts
         int count = 0;
         String name = "";
-        
+
         // if (count) { ... }              // Error: incompatible types
         // if (name) { ... }               // Error: incompatible types
-        
+
         if (count == 0) { ... }           // Must be explicit
         if (name.isEmpty()) { ... }       // Must be explicit
     }
@@ -368,7 +367,7 @@ public class StrongTyping {
 ```javascript
 // JavaScript performs lots of implicit type coercion
 console.log("5" + 10);          // "510" (number to string)
-console.log("5" - 10);          // -5 (string to number)  
+console.log("5" - 10);          // -5 (string to number)
 console.log("5" * "10");        // 50 (both to numbers)
 console.log(10 + null);         // 10 (null becomes 0)
 console.log(10 + undefined);    // NaN (undefined becomes NaN)
@@ -387,7 +386,7 @@ console.log("5" === 5);         // false (strict equality - no coercion)
 console.log(0 == false);        // true
 console.log(0 === false);       // false
 
-console.log("" == false);       // true  
+console.log("" == false);       // true
 console.log("" === false);      // false
 
 // Weird coercions
@@ -447,32 +446,32 @@ int main() {
     // C allows implicit conversions between many types
     int integer = 10;
     double decimal = 5.5;
-    
+
     // Implicit conversion int to double
     double result1 = integer + decimal;  // 15.5
     printf("int + double = %f\n", result1);
-    
+
     // Implicit conversion double to int (truncation)
     int result2 = integer + decimal;     // 15 - decimal part lost!
     printf("int + double (as int) = %d\n", result2);
-    
+
     // Pointer and integer mixing (dangerous!)
     int arr[3] = {1, 2, 3};
     int *ptr = arr;
-    
+
     printf("arr[0] = %d\n", *ptr);       // 1
     printf("arr[1] = %d\n", *(ptr + 1)); // 2 - pointer arithmetic
-    
+
     // Void pointer can point to anything
     void *generic_ptr;
     generic_ptr = &integer;
     generic_ptr = &decimal;
     generic_ptr = arr;
-    
+
     // You have to cast back to use it
     int *int_ptr = (int*)generic_ptr;
     printf("First element: %d\n", *int_ptr);
-    
+
     return 0;
 }
 ```
@@ -492,21 +491,21 @@ func main() {
     var count int = 10
     var price float64 = 19.99
     var name string = "Gopher"
-    
+
     // These would cause compile errors:
     // count = "ten"           // Cannot use "ten" as int value
     // result := count + price // Invalid operation: mismatched types
-    
+
     // Explicit conversions required
     total := float64(count) * price  // Must explicitly convert
     fmt.Printf("Total: $%.2f\n", total)
-    
+
     // No implicit boolean conversion
     if count == 0 {              // Must use explicit comparison
         fmt.Println("Count is zero")
     }
     // if count { ... }         // Non-bool used in if condition
-    
+
     // Strong interface satisfaction
     var s fmt.Stringer
     s = count                    // Error: int doesn't implement Stringer
@@ -533,7 +532,7 @@ function calculate(a, b) {
 }
 
 console.log(calculate("5", 10));  // "510" at runtime
-console.log(calculate(5, "10"));  // "510" at runtime  
+console.log(calculate(5, "10"));  // "510" at runtime
 `;
 ```
 

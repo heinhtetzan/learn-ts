@@ -1,4 +1,4 @@
-Here are the main types in JavaScript, categorized by their characteristics:
+# Types in JavaScript
 
 ## Primitive Types (Immutable)
 

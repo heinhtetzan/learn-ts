@@ -1,4 +1,4 @@
-I'll show you how to create an invoice state management system using Zustand with TypeScript. Here's a comprehensive example:
+# Zustand State Management
 
 ## 1. First, install the required dependencies:
 
@@ -57,7 +57,7 @@ interface InvoiceActions {
   addInvoice: (invoice: Invoice) => void;
   updateInvoice: (id: string, invoice: Partial<Invoice>) => void;
   deleteInvoice: (id: string) => void;
-  
+
   // Current invoice operations
   setCurrentInvoice: (invoice: Invoice | null) => void;
   createNewInvoice: () => void;
@@ -65,7 +65,7 @@ interface InvoiceActions {
   updateItemInCurrentInvoice: (itemId: string, updates: Partial<InvoiceItem>) => void;
   removeItemFromCurrentInvoice: (itemId: string) => void;
   calculateCurrentInvoiceTotals: () => void;
-  
+
   // Utility
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
@@ -100,10 +100,10 @@ export const useInvoiceStore = create<InvoiceState & InvoiceActions>((set, get) 
   // Actions
   setInvoices: (invoices) => set({ invoices }),
 
-  addInvoice: (invoice) => 
-    set((state) => ({ 
+  addInvoice: (invoice) =>
+    set((state) => ({
       invoices: [...state.invoices, invoice],
-      currentInvoice: null 
+      currentInvoice: null
     })),
 
   updateInvoice: (id, updates) =>
@@ -111,8 +111,8 @@ export const useInvoiceStore = create<InvoiceState & InvoiceActions>((set, get) 
       invoices: state.invoices.map((invoice) =>
         invoice.id === id ? { ...invoice, ...updates } : invoice
       ),
-      currentInvoice: state.currentInvoice?.id === id 
-        ? { ...state.currentInvoice, ...updates } 
+      currentInvoice: state.currentInvoice?.id === id
+        ? { ...state.currentInvoice, ...updates }
         : state.currentInvoice,
     })),
 
@@ -198,7 +198,7 @@ export const useInvoiceStore = create<InvoiceState & InvoiceActions>((set, get) 
       (sum, item) => sum + item.total,
       0
     );
-    
+
     const tax = subtotal * 0.1; // 10% tax for example
     const total = subtotal + tax;
 
@@ -228,7 +228,7 @@ export const useInvoices = () => {
   const invoices = useInvoiceStore((state) => state.invoices);
   const isLoading = useInvoiceStore((state) => state.isLoading);
   const error = useInvoiceStore((state) => state.error);
-  
+
   const { setInvoices, addInvoice, updateInvoice, deleteInvoice } = useInvoiceStore();
 
   return {
@@ -244,7 +244,7 @@ export const useInvoices = () => {
 
 export const useCurrentInvoice = () => {
   const currentInvoice = useInvoiceStore((state) => state.currentInvoice);
-  
+
   const {
     setCurrentInvoice,
     createNewInvoice,
@@ -311,12 +311,12 @@ import React, { useState } from 'react';
 import { useCurrentInvoice } from '../hooks/useCurrentInvoice';
 
 export const InvoiceForm: React.FC = () => {
-  const { 
-    currentInvoice, 
-    addItemToCurrentInvoice, 
+  const {
+    currentInvoice,
+    addItemToCurrentInvoice,
     removeItemFromCurrentInvoice,
     updateItemInCurrentInvoice,
-    calculateCurrentInvoiceTotals 
+    calculateCurrentInvoiceTotals
   } = useCurrentInvoice();
 
   const [newItem, setNewItem] = useState({
@@ -339,28 +339,28 @@ export const InvoiceForm: React.FC = () => {
   return (
     <div className="invoice-form">
       <h2>Invoice #{currentInvoice.number}</h2>
-      
+
       <div className="items-section">
         <h3>Items</h3>
         {currentInvoice.items.map((item) => (
           <div key={item.id} className="invoice-item">
             <input
               value={item.description}
-              onChange={(e) => 
+              onChange={(e) =>
                 updateItemInCurrentInvoice(item.id, { description: e.target.value })
               }
             />
             <input
               type="number"
               value={item.quantity}
-              onChange={(e) => 
+              onChange={(e) =>
                 updateItemInCurrentInvoice(item.id, { quantity: parseInt(e.target.value) })
               }
             />
             <input
               type="number"
               value={item.price}
-              onChange={(e) => 
+              onChange={(e) =>
                 updateItemInCurrentInvoice(item.id, { price: parseFloat(e.target.value) })
               }
             />
@@ -370,7 +370,7 @@ export const InvoiceForm: React.FC = () => {
             </button>
           </div>
         ))}
-        
+
         <div className="add-item">
           <input
             placeholder="Description"

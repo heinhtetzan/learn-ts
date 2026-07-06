@@ -1,4 +1,4 @@
-Here are different ways to write React components with TypeScript using Function Components (FC) and arrow functions:
+# React Components with TypeScript
 
 ## 1. Basic Arrow Function Component with FC
 
@@ -36,11 +36,11 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button = ({ 
-  children, 
-  onClick, 
-  variant = 'primary', 
-  disabled = false 
+const Button = ({
+  children,
+  onClick,
+  variant = 'primary',
+  disabled = false
 }: ButtonProps) => {
   return (
     <button
@@ -100,11 +100,11 @@ interface InputProps {
   type?: 'text' | 'email' | 'password';
 }
 
-const Input = ({ 
-  value, 
-  onChange, 
-  placeholder = '', 
-  type = 'text' 
+const Input = ({
+  value,
+  onChange,
+  placeholder = '',
+  type = 'text'
 }: InputProps) => {
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value);
@@ -134,9 +134,9 @@ interface CounterProps {
   step?: number;
 }
 
-const Counter: React.FC<CounterProps> = ({ 
-  initialValue = 0, 
-  step = 1 
+const Counter: React.FC<CounterProps> = ({
+  initialValue = 0,
+  step = 1
 }) => {
   const [count, setCount] = useState<number>(initialValue);
 
@@ -175,11 +175,11 @@ interface ListProps<T> {
   className?: string;
 }
 
-const List = <T,>({ 
-  items, 
-  renderItem, 
-  keyExtractor, 
-  className = '' 
+const List = <T,>({
+  items,
+  renderItem,
+  keyExtractor,
+  className = ''
 }: ListProps<T>) => {
   return (
     <div className={`list ${className}`}>
@@ -207,11 +207,11 @@ interface AvatarProps {
   fallback?: string;
 }
 
-const Avatar: React.FC<AvatarProps> = ({ 
-  src, 
-  alt, 
-  size = 'md', 
-  fallback = '👤' 
+const Avatar: React.FC<AvatarProps> = ({
+  src,
+  alt,
+  size = 'md',
+  fallback = '👤'
 }) => {
   const [imgError, setImgError] = React.useState(false);
 
@@ -316,7 +316,7 @@ interface FormFieldProps {
 
 const FormField: React.FC<FormFieldProps> = ({ name, children }) => {
   const context = useContext(FormContext);
-  
+
   if (!context) {
     throw new Error('FormField must be used within a Form');
   }
@@ -343,7 +343,7 @@ export default Form;
 
 ## Key Points:
 
-1. **React.FC vs Regular Props**: 
+1. **React.FC vs Regular Props**:
    - `React.FC` includes `children` implicitly and has better default generic behavior
    - Regular props are more explicit and preferred in modern React
 

@@ -52,12 +52,12 @@ interface FormProps {
 }
 
 // Clear what props are expected without reading implementation
-const DataForm: React.FC<FormProps> = ({ 
-  onSubmit, 
-  validationSchema, 
+const DataForm: React.FC<FormProps> = ({
+  onSubmit,
+  validationSchema,
   initialValues = {},
   mode = 'create',
-  disabled = false 
+  disabled = false
 }) => {
   // Component logic...
 };
@@ -221,7 +221,7 @@ type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-type ConditionalRender<T> = T extends { visible: true } 
+type ConditionalRender<T> = T extends { visible: true }
   ? { render: () => JSX.Element }
   : { render?: never };
 

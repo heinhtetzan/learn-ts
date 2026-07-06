@@ -1,4 +1,4 @@
-I'll create a comprehensive student registration form using React, TypeScript, React Hook Form, and Zod. Here's the complete implementation:
+# Form Validation with Zod & React Hook Form
 
 ## 1. First, install the required dependencies:
 
@@ -46,19 +46,19 @@ export const studentSchema = z.object({
     .min(2, 'First name must be at least 2 characters')
     .max(50, 'First name must be less than 50 characters')
     .regex(/^[a-zA-Z\s]+$/, 'First name can only contain letters and spaces'),
-  
+
   lastName: z.string()
     .min(2, 'Last name must be at least 2 characters')
     .max(50, 'Last name must be less than 50 characters')
     .regex(/^[a-zA-Z\s]+$/, 'Last name can only contain letters and spaces'),
-  
+
   email: z.string()
     .email('Please enter a valid email address'),
-  
+
   phone: z.string()
     .min(10, 'Phone number must be at least 10 digits')
     .regex(/^\+?[\d\s-]+$/, 'Please enter a valid phone number'),
-  
+
   dateOfBirth: z.string()
     .refine((date) => {
       const birthDate = new Date(date);
@@ -66,45 +66,45 @@ export const studentSchema = z.object({
       const age = today.getFullYear() - birthDate.getFullYear();
       return age >= 16 && age <= 100;
     }, 'Student must be between 16 and 100 years old'),
-  
+
   gender: z.enum(['male', 'female', 'other'], {
     required_error: 'Please select a gender',
   }),
-  
+
   address: z.string()
     .min(5, 'Address must be at least 5 characters')
     .max(100, 'Address must be less than 100 characters'),
-  
+
   city: z.string()
     .min(2, 'City must be at least 2 characters')
     .max(50, 'City must be less than 50 characters'),
-  
+
   state: z.string()
     .min(2, 'State must be at least 2 characters')
     .max(50, 'State must be less than 50 characters'),
-  
+
   zipCode: z.string()
     .regex(/^\d{5}(-\d{4})?$/, 'Please enter a valid ZIP code'),
-  
+
   country: z.string()
     .min(2, 'Country must be at least 2 characters')
     .max(50, 'Country must be less than 50 characters'),
-  
+
   course: z.string()
     .min(1, 'Please select a course'),
-  
+
   semester: z.number()
     .min(1, 'Semester must be at least 1')
     .max(12, 'Semester must be at most 12'),
-  
+
   emergencyContactName: z.string()
     .min(2, 'Emergency contact name must be at least 2 characters')
     .max(50, 'Emergency contact name must be less than 50 characters'),
-  
+
   emergencyContactPhone: z.string()
     .min(10, 'Emergency contact phone must be at least 10 digits')
     .regex(/^\+?[\d\s-]+$/, 'Please enter a valid phone number'),
-  
+
   termsAccepted: z.boolean()
     .refine((val) => val === true, 'You must accept the terms and conditions'),
 });
@@ -126,9 +126,9 @@ interface StudentFormProps {
   isLoading?: boolean;
 }
 
-const StudentRegistrationForm: React.FC<StudentFormProps> = ({ 
-  onSubmit, 
-  isLoading = false 
+const StudentRegistrationForm: React.FC<StudentFormProps> = ({
+  onSubmit,
+  isLoading = false
 }) => {
   const {
     register,
@@ -176,7 +176,7 @@ const StudentRegistrationForm: React.FC<StudentFormProps> = ({
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
             Personal Information
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
@@ -286,7 +286,7 @@ const StudentRegistrationForm: React.FC<StudentFormProps> = ({
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
             Address Information
           </h3>
-          
+
           <div className="mb-4">
             <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
               Street Address *
@@ -375,7 +375,7 @@ const StudentRegistrationForm: React.FC<StudentFormProps> = ({
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
             Academic Information
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="course" className="block text-sm font-medium text-gray-700 mb-1">
@@ -425,7 +425,7 @@ const StudentRegistrationForm: React.FC<StudentFormProps> = ({
           <h3 className="text-lg font-semibold text-gray-700 mb-4">
             Emergency Contact
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label htmlFor="emergencyContactName" className="block text-sm font-medium text-gray-700 mb-1">
@@ -471,7 +471,7 @@ const StudentRegistrationForm: React.FC<StudentFormProps> = ({
               className="mt-1 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
             />
             <label htmlFor="termsAccepted" className="text-sm text-gray-700">
-              I hereby declare that the information provided is true and correct to the best of my knowledge. 
+              I hereby declare that the information provided is true and correct to the best of my knowledge.
               I agree to the terms and conditions of the institution. *
             </label>
           </div>
@@ -520,14 +520,14 @@ const StudentRegistrationPage: React.FC = () => {
 
   const handleSubmit = async (data: StudentFormData) => {
     setIsLoading(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     console.log('Form submitted:', data);
     setSubmittedData(data);
     setIsLoading(false);
-    
+
     // Here you would typically send the data to your backend
     // await api.registerStudent(data);
   };
@@ -535,11 +535,11 @@ const StudentRegistrationPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
-        <StudentRegistrationForm 
-          onSubmit={handleSubmit} 
-          isLoading={isLoading} 
+        <StudentRegistrationForm
+          onSubmit={handleSubmit}
+          isLoading={isLoading}
         />
-        
+
         {submittedData && (
           <div className="mt-8 p-6 bg-green-50 border border-green-200 rounded-lg">
             <h3 className="text-lg font-semibold text-green-800 mb-2">

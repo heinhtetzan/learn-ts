@@ -1,4 +1,4 @@
-I'll create a vanilla TypeScript expense tracker with Tailwind CSS and Vite. Here's the complete implementation:
+# Expense Tracker Project
 
 ## Project Structure
 ```

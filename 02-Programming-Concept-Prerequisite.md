@@ -1,3 +1,5 @@
+# Programming Concepts: Compilation & Interpretation
+
 ## Compilation
 
 **What it is:** The entire source code is converted to machine code (or bytecode) **before** execution. This creates a separate executable file.
@@ -191,13 +193,13 @@ User: alice
 ## Key Takeaways
 
 1. **Compilation** = Translate once, run many times
-2. **Interpretation** = Translate and run simultaneously  
+2. **Interpretation** = Translate and run simultaneously
 3. **JIT Compilation** = Best of both worlds: quick start + optimized execution
 4. **TypeScript** = Compile-time type checking, but runs as interpreted JavaScript
 
 This hybrid approach is why TypeScript gives you development-time safety while maintaining JavaScript's runtime flexibility!
 
-Here's a comprehensive breakdown of which languages are typically compiled, interpreted, or use a hybrid approach:
+---
 
 ## Purely Compiled Languages
 
@@ -388,7 +390,7 @@ console.log(`Hello ${user.name}`);
 
 2. **Hybrid is Common**: Most modern languages use hybrid approaches for balance between startup time and execution speed
 
-3. **Transpilation vs Compilation**: 
+3. **Transpilation vs Compilation**:
    - **Compilation**: High-level → Low-level (machine code/bytecode)
    - **Transpilation**: High-level → High-level (TypeScript → JavaScript)
 

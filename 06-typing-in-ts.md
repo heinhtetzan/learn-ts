@@ -1,3 +1,5 @@
+# Typing in TypeScript
+
 ## Implicit Typing
 
 **Implicit Typing** (also known as **Type Inference**) is a feature where the TypeScript compiler automatically determines and assigns data types to variables, functions, and expressions based on their initial values, usage context, and assigned values, without requiring explicit type annotations from the developer.

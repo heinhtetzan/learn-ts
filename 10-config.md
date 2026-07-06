@@ -1,4 +1,6 @@
-## 🧩 1. What is `tsconfig.json`?
+# TypeScript Configuration (tsconfig.json)
+
+## 🧩 1. What is tsconfig.json
 
 It’s a JSON file that defines how TypeScript should behave for your project.
 
@@ -148,8 +150,3 @@ You can extend another config (useful for monorepos or libraries):
 * Add a `"types"` field in `package.json` if you publish your own package.
 * Use `"declaration": true` to generate `.d.ts` files (for libraries).
 * Combine with **ESLint** for code style enforcement.
-
----
-
-Would you like me to walk you through **each section of `tsconfig.json` line-by-line** (e.g., what every option inside `"compilerOptions"` means in depth)?
-That’s great for mastering it as a senior developer.

@@ -1,3 +1,5 @@
+# JavaScript Prerequisites
+
 ### The Absolute Must-Haves (Non-Negotiable)
 
 **1. Core JavaScript (ES6+)**

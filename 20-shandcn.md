@@ -1,4 +1,4 @@
-I'll help you get started with TypeScript and shadcn/ui! Here's a comprehensive guide:
+# shadcn/ui with TypeScript
 
 ## 1. Installation and Setup
 
@@ -74,7 +74,7 @@ export function UserForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       // Handle form submission
       console.log('Form data:', formData);
@@ -86,7 +86,7 @@ export function UserForm() {
       ...prev,
       [field]: field === 'age' ? parseInt(value) || 0 : value,
     }));
-    
+
     // Clear error when user starts typing
     if (errors[field]) {
       setErrors(prev => ({
@@ -245,7 +245,7 @@ export function UsersTable() {
         onChange={(e) => setSearch(e.target.value)}
         className="max-w-sm"
       />
-      
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -310,7 +310,7 @@ export function useForm<T extends Record<string, any>>({
 
   const handleChange = useCallback((name: keyof T, value: any) => {
     setValues(prev => ({ ...prev, [name]: value }));
-    
+
     // Clear error when field changes
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));

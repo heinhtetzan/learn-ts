@@ -1,4 +1,4 @@
-Here are 5 common and useful examples of Union and Intersection Types in TypeScript:
+# Advanced Types: Union, Intersection, Generics
 
 ## 1. **API Response with Success/Error States**
 
@@ -257,9 +257,6 @@ console.log(firstUser.email); // ✅ TypeScript knows this is a UserEntity
 
 These patterns are commonly used in real-world applications for handling different states, component variants, form validation, event systems, and database operations.
 
-
-You're right! Let me focus specifically on **Intersection Types** with 5 practical examples:
-
 ## 1. **Combining Multiple Interfaces for Complex Objects**
 
 ```typescript
@@ -486,11 +483,7 @@ function checkPermission(user: AuthenticatedUser, action: string): boolean {
 - **Entity composition**: Creating rich objects from multiple concerns
 - **Plugin systems**: Combining multiple capabilities
 - **Builder patterns**: Step-by-step object construction
-
 Intersection types are perfect when you need to **combine capabilities** rather than choose between alternatives (which is what union types are for).
-
-
-Here are more comprehensive examples of TypeScript type aliases:
 
 ## 1. **Primitive and Union Types**
 ```typescript

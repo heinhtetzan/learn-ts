@@ -1,4 +1,4 @@
-# **When You Should Add TypeScript:**
+# When to Use TypeScript with React
 
 ### 1. **New Medium-to-Large Projects**
 - Projects expected to grow beyond a few components

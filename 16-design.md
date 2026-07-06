@@ -1,6 +1,6 @@
 # Software Design in React using TypeScript
 
-## **Architectural Patterns & Principles**
+## Architectural Patterns & Principles
 
 ### 1. **Component Design Patterns**
 
@@ -49,8 +49,8 @@ const UsersContainer: React.FC<UsersContainerProps> = ({ userId }) => {
 
   // Usage: Connects data logic with presentational component
   return (
-    <UsersList 
-      users={users} 
+    <UsersList
+      users={users}
       loading={loading}
       error={error}
       onRefresh={fetchUsers}
@@ -67,15 +67,15 @@ interface UsersListProps {
 }
 
 // Definition: Pure UI component, no business logic
-const UsersList: React.FC<UsersListProps> = ({ 
-  users, 
-  loading, 
-  error, 
-  onRefresh 
+const UsersList: React.FC<UsersListProps> = ({
+  users,
+  loading,
+  error,
+  onRefresh
 }) => {
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error} />;
-  
+
   return (
     <div className="users-container">
       <button onClick={onRefresh} className="refresh-btn">
@@ -154,7 +154,7 @@ const Form: React.FC<FormProps> & {
     e.preventDefault();
     // Validate all fields
     Object.keys(values).forEach(validateField);
-    
+
     if (Object.values(errors).every(error => !error)) {
       onSubmit(values);
     }
@@ -223,9 +223,9 @@ interface ErrorProps {
 // Usage: Display error for specific field
 const ErrorMessage: React.FC<ErrorProps> = ({ name }) => {
   const { errors } = useForm();
-  
+
   if (!errors[name]) return null;
-  
+
   return <span className="field-error">{errors[name]}</span>;
 };
 
@@ -244,10 +244,10 @@ const UserRegistrationForm: React.FC = () => {
     <Form onSubmit={handleSubmit} initialValues={{ username: '', email: '' }}>
       <Form.Input name="username" placeholder="Username" required />
       <Form.Error name="username" />
-      
+
       <Form.Input name="email" type="email" placeholder="Email" required />
       <Form.Error name="email" />
-      
+
       <Form.Submit>Register</Form.Submit>
     </Form>
   );
@@ -278,11 +278,11 @@ function useApi<T>(url: string, initialData: T | null = null): UseApiResult<T> {
   const fetchData = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(url);
       if (!response.ok) throw new Error('API request failed');
-      
+
       const result = await response.json();
       setData(result);
     } catch (err) {
@@ -353,7 +353,7 @@ interface UserCardProps {
 
 const UserCard: React.FC<UserCardProps> = ({ user, loading }) => {
   if (loading) return <div className="skeleton-loader">Loading...</div>;
-  
+
   return (
     <div className="user-card">
       <h3>{user.name}</h3>
@@ -373,9 +373,9 @@ const UserList: React.FC = () => {
   return (
     <div>
       {users.map(user => (
-        <UserCardWithLoading 
-          key={user.id} 
-          user={user} 
+        <UserCardWithLoading
+          key={user.id}
+          user={user}
           isLoading={loading}
         />
       ))}
@@ -411,7 +411,7 @@ function DataFetcher<T>({ url, children }: DataFetcherProps<T>): React.ReactElem
   const fetchData = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await fetch(url);
       const result = await response.json();

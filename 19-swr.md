@@ -1,4 +1,4 @@
-Here's a comprehensive example of a React component using SWR with TypeScript:
+# Data Fetching with SWR
 
 ## Basic Component with SWR
 
@@ -131,7 +131,7 @@ const PostsComponent: React.FC = () => {
   const [page, setPage] = useState(1);
 
   // Construct the URL with parameters
-  const url = userId 
+  const url = userId
     ? `https://jsonplaceholder.typicode.com/posts?userId=${userId}&_page=${page}&_limit=10`
     : `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`;
 
@@ -158,7 +158,7 @@ const PostsComponent: React.FC = () => {
 
     // Optimistic update
     await mutate([newPost, ...(posts || [])], false);
-    
+
     // In a real app, you would make an API call here
     // then revalidate the data
   };
@@ -273,7 +273,7 @@ export const useTodos = () => {
 
     // Optimistic update
     await mutate([newTodo, ...(data || [])], false);
-    
+
     // In real app, make API call then revalidate
     // await fetch('/api/todos', { method: 'POST', body: JSON.stringify(newTodo) });
     // mutate();
@@ -285,7 +285,7 @@ export const useTodos = () => {
     );
 
     await mutate(updatedTodos, false);
-    
+
     // In real app, make API call then revalidate
     // await fetch(`/api/todos/${id}`, { method: 'PATCH' });
     // mutate();
@@ -311,7 +311,7 @@ const TodosComponent: React.FC = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Todos</h1>
-      
+
       <button
         onClick={() => addTodo(`New Todo ${Date.now()}`)}
         className="mb-4 px-4 py-2 bg-blue-500 text-white rounded"
